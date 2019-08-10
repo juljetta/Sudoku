@@ -1,0 +1,49 @@
+body {
+  display: flex;
+  height: 100vh;
+  align-items: center;
+  justify-content: center;
+}
+table {
+  /* border: 1px solid black; */
+  /* width: 100%; */
+
+  border-collapse: collapse;
+}
+
+/* tr {
+  border: 1px solid black;
+} */
+
+td:hover {
+  background-color: lightgoldenrodyellow;
+}
+
+td {
+  border: 1px solid grey;
+  color: grey;
+  width: 50px;
+  height: 50px;
+  text-align: center;
+  font-size: 24pt;
+}
+
+.bottom-border {
+  border-bottom: solid 3px grey;
+}
+
+.top-border {
+  border-top: solid 3px grey;
+}
+
+.right-border {
+  border-right: solid 3px grey;
+}
+
+.left-border {
+  border-left: solid 3px grey;
+}
+
+.selected {
+  background-color: lightpink;
+}
