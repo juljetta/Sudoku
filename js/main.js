@@ -8,9 +8,11 @@ window.onload = function() {
 
   for (let i = 0; i < newGame.game.length; i++) {
     for (let j = 0; j < newGame.game[i].length; j++) {
-      $(
-        "table tr:nth-child(" + (i + 1) + ") td:nth-child(" + (j + 1) + ")"
-      ).text(newGame.game[i][j]);
+      if (newGame.hiddenNumbers.indexOf(i + ", " + j) === -1) {
+        $(
+          "table tr:nth-child(" + (i + 1) + ") td:nth-child(" + (j + 1) + ")"
+        ).text(newGame.game[i][j]);
+      }
     }
   }
 };
