@@ -1,8 +1,3 @@
-function randomNumber(n1, n2) {
-  var randNumb = Math.floor(Math.random() * n2 + n1);
-  return randNumb;
-}
-
 window.onload = function() {
   var newGame = new Sudoku(games);
 
@@ -22,8 +17,8 @@ window.onload = function() {
   $(".openCell").click(function() {
     // Removing background color
     $("tr, td").removeClass("bg");
-
     newGame.currentCell = this;
+
     // Adding background color to the current raw
     $(newGame.currentCell)
       .parent()
@@ -37,6 +32,27 @@ window.onload = function() {
             "table tr:nth-child(" + (i + 1) + ") td:nth-child(" + (j + 1) + ")"
           ).addClass("bg");
         }
+      }
+    }
+
+    // Adding background to the square block
+    var cellIndex = $(newGame.currentCell).index();
+    var rowIndex = $(newGame.currentCell)
+      .parent()
+      .index();
+
+    var startingCoordinates = newGame.findStartingCoordinates(
+      rowIndex,
+      cellIndex
+    );
+    var startI = startingCoordinates[0];
+    var startJ = startingCoordinates[1];
+    // debugger;
+    for (let i = startI; i <= startI + 2; i++) {
+      for (let j = startJ; j <= startJ + 2; j++) {
+        $(
+          "table tr:nth-child(" + (i + 1) + ") td:nth-child(" + (j + 1) + ")"
+        ).addClass("bg");
       }
     }
   });
