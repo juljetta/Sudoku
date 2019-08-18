@@ -26,7 +26,7 @@ td {
   width: 75px;
   height: 75px;
   text-align: center;
-  font-size: 24pt;
+  font-size: 28pt;
 }
 
 .bottom-border {
@@ -45,15 +45,30 @@ td {
   border-left: solid 3px #7d98a6;
 }
 
+.current-cell {
+  background-color: rgb(255, 189, 68) !important;
+}
+
 .updatedCell {
   background-color: #f9b6838a;
 }
 
 .openCell {
-  color: #f9b683e3;
+  color: blue;
+  cursor: pointer;
 }
+
+.conflict-cell {
+  background-color: pink !important;
+}
+
+.conflict-open-cell {
+  color: red !important;
+  background-color: pink !important;
+}
+
 .correct {
-  color: lightblue;
+  color: green;
 }
 
 .bg {
