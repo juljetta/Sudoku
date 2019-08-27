@@ -69,16 +69,6 @@ window.onload = function() {
       $(currentCell).click();
 
       currentCell.innerText = event.key;
-
-      // Validation with the final result
-      // var cellIndex = $(currentCell).index();
-      // var rowIndex = $(currentCell)
-      //   .parent()
-      //   .index();
-      // $("td").removeClass("correct");
-      // if (game[rowIndex][cellIndex] == event.key) {
-      //   $(currentCell).addClass("correct");
-      // }
       checkConflicts();
     } else {
       return false;
@@ -104,10 +94,13 @@ window.onload = function() {
           .parent()
           .index();
 
+        var conflictsCount = 0;
+
         // Validating row
         for (let i = 0; i < 9; i++) {
           var currentHTMLCell = getHTMLCell(rowIndex, i);
           if (currentHTMLCell.text() == inputValue) {
+            conflictsCount++;
             if (currentHTMLCell.hasClass("openCell")) {
               currentHTMLCell.addClass("conflict-open-cell");
             } else {
@@ -120,6 +113,7 @@ window.onload = function() {
         for (let i = 0; i < 9; i++) {
           var currentHTMLCell = getHTMLCell(i, cellIndex);
           if (currentHTMLCell.text() == inputValue) {
+            conflictsCount++;
             if (currentHTMLCell.hasClass("openCell")) {
               currentHTMLCell.addClass("conflict-open-cell");
             } else {
@@ -139,6 +133,7 @@ window.onload = function() {
           for (let j = startJ; j <= startJ + 2; j++) {
             var currentHTMLCell = getHTMLCell(i, j);
             if (currentHTMLCell.text() == inputValue) {
+              conflictsCount++;
               if (currentHTMLCell.hasClass("openCell")) {
                 currentHTMLCell.addClass("conflict-open-cell");
               } else {
@@ -146,6 +141,12 @@ window.onload = function() {
               }
             }
           }
+        }
+
+        // if this cell has only three conflicts, this is the conflict with itself
+        // (3 = conflict via row, via column, via sqaure)
+        if (conflictsCount == 3) {
+          $(cell).removeClass("conflict-open-cell");
         }
       }
     });
