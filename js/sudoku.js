@@ -1,5 +1,5 @@
 class Sudoku {
-  openCells = 2;
+  openCells = 25;
 
   constructor(games) {
     this.game = games[this.randomNumber(0, 9)];

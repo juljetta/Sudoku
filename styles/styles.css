@@ -17,12 +17,12 @@ table {
 } */
 
 td:hover {
-  background-color: #f9b68337;
+  background-color: #d1f5f5;
 }
 
 td {
-  border: 1px solid #f9b6838a;
-  color: #3e484d;
+  border: 1px solid #08c4c472;
+  color: #7b929f;
   width: 75px;
   height: 75px;
   text-align: center;
@@ -30,49 +30,45 @@ td {
 }
 
 .bottom-border {
-  border-bottom: solid 3px #7d98a6;
+  border-bottom: solid 3px #079f9f;
 }
 
 .top-border {
-  border-top: solid 3px #7d98a6;
+  border-top: solid 3px #079f9f;
 }
 
 .right-border {
-  border-right: solid 3px #7d98a6;
+  border-right: solid 3px #079f9f;
 }
 
 .left-border {
-  border-left: solid 3px #7d98a6;
+  border-left: solid 3px #079f9f;
 }
 
 .current-cell {
-  background-color: rgb(255, 189, 68) !important;
+  background-color: #b0e1e1 !important;
 }
 
-.updatedCell {
-  background-color: #f9b6838a;
-}
+/* .updatedCell {
+  background-color: #b5ddd0;
+} */
 
 .openCell {
-  color: blue;
+  color: #08c4c3;
   cursor: pointer;
 }
 
 .conflict-cell {
-  background-color: pink !important;
+  background-color: #fee3df !important;
 }
 
 .conflict-open-cell {
-  color: red !important;
-  background-color: pink !important;
-}
-
-.correct {
-  color: green;
+  color: #f76c5b !important;
+  background-color: #fee3df !important;
 }
 
 .bg {
-  background-color: #fceee2;
+  background-color: #e6f4f4;
 }
 
 /* tr {

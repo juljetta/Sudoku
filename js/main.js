@@ -68,7 +68,12 @@ window.onload = function() {
       const { currentCell, game } = newGame;
       $(currentCell).click();
 
-      currentCell.innerText = event.key;
+      if (event.keyCode == 8) {
+        currentCell.innerText = "";
+      } else {
+        currentCell.innerText = event.key;
+      }
+      // currentCell.innerText = event.key;
       var conflictsCount = checkConflicts();
 
       setTimeout(function() {
@@ -86,6 +91,13 @@ window.onload = function() {
       }
     }
   });
+
+  window.addEventListener("keydown", event => {
+    if (event.keyCode == 8) {
+      return;
+    }
+  });
+
   function checkIsGameComplete(conflictsCount) {
     var openCellsCount = 0;
     $(".openCell").each(function(_, cell) {
