@@ -1,9 +1,11 @@
 class Sudoku {
+  openCells = 2;
+
   constructor(games) {
     this.game = games[this.randomNumber(0, 9)];
     this.hiddenNumbers = [];
     this.currentCell = null;
-    for (let i = 0; i <= 30; i++) {
+    for (let i = 0; i < this.openCells; i++) {
       var n1 = this.randomNumber(0, 9);
       var n2 = this.randomNumber(0, 9);
       this.hiddenNumbers.push(n1 + ", " + n2);

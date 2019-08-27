@@ -55,7 +55,7 @@ window.onload = function() {
     );
     var startI = startingCoordinates[0];
     var startJ = startingCoordinates[1];
-    // debugger;
+
     for (let i = startI; i <= startI + 2; i++) {
       for (let j = startJ; j <= startJ + 2; j++) {
         getHTMLCell(i, j).addClass("bg");
@@ -64,12 +64,16 @@ window.onload = function() {
   });
 
   window.addEventListener("keyup", function(event) {
-    if (49 <= event.keyCode && event.keyCode <= 57) {
+    if (49 <= event.keyCode && event.keyCode <= 57 || event.keyCode == 8) {
       const { currentCell, game } = newGame;
       $(currentCell).click();
 
       currentCell.innerText = event.key;
-      checkConflicts();
+      var conflictsCount = checkConflicts();
+
+      setTimeout(function() {
+        checkIsGameComplete(conflictsCount);
+      }, 50);
     } else {
       return false;
     }
@@ -82,10 +86,30 @@ window.onload = function() {
       }
     }
   });
+  function checkIsGameComplete(conflictsCount) {
+    var openCellsCount = 0;
+    $(".openCell").each(function(_, cell) {
+      if ($(cell).text() == "") {
+        openCellsCount++;
+      }
+    });
+
+    if (conflictsCount == 0 && openCellsCount == 0) {
+      alert("You won!");
+    } else {
+      console.log(
+        "Keep going, you have conflicts: " +
+          conflictsCount +
+          ", open cells: " +
+          openCellsCount
+      );
+    }
+  }
   function checkConflicts() {
     $("td").removeClass("conflict-cell");
     $("td").removeClass("conflict-open-cell");
 
+    var totalConflicts = 0;
     $(".openCell").each(function(_, cell) {
       if ($(cell).text() != "") {
         var inputValue = $(cell).text();
@@ -147,8 +171,12 @@ window.onload = function() {
         // (3 = conflict via row, via column, via sqaure)
         if (conflictsCount == 3) {
           $(cell).removeClass("conflict-open-cell");
+        } else {
+          // count total number of conflicts
+          totalConflicts += conflictsCount;
         }
       }
     });
+    return totalConflicts;
   }
 };
